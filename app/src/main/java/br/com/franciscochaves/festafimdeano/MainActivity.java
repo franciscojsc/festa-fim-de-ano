@@ -2,10 +2,11 @@ package br.com.franciscochaves.festafimdeano;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewHold mViewHold = new ViewHold();
 
@@ -17,6 +18,17 @@ public class MainActivity extends AppCompatActivity {
         this.mViewHold.textToday = (TextView) findViewById(R.id.text_today);
         this.mViewHold.textDayLeft = (TextView) findViewById(R.id.text_days_left);
         this.mViewHold.buttonConfirm = (Button) findViewById(R.id.button_confirm);
+
+        this.mViewHold.buttonConfirm.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if(id == R.id.button_confirm){
+            //Lógica de navegação
+        }
+
     }
 
     private static class ViewHold{
