@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         this.mSecurityPreferences = new SecurityPreferences(this);
 
-        this.verifyPresence();
     }
 
     @Override
@@ -60,6 +59,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    // Quando a activity se torna visível para o usuário
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    // A activity está pronta para ser manipulada, para receber valores
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        this.verifyPresence();
+    }
+
+    // A primeira notificação que a activity está saindo do estado ativa
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    // Neste método, pode adicionar processamento mais pesado, salvar dados por exemplo
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    // Quando a activity for deslocada da mémoria, quando está sem capacidade para execução
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     private static class ViewHold{
         TextView textToday;
