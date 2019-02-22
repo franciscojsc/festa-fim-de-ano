@@ -24,6 +24,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         this.mViewHold.checkParticipate = (CheckBox) findViewById(R.id.check_participate);
 
         this.mViewHold.checkParticipate.setOnClickListener(this);
+
+        this.loadDataFromActivity();
     }
 
     @Override
@@ -35,6 +37,20 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 this.mSecurityPreferences.storeString(FimDeAnoConstants.PRESENCE, FimDeAnoConstants.CONFIRMED_WILL_GO);
             }else{
                 this.mSecurityPreferences.storeString(FimDeAnoConstants.PRESENCE, FimDeAnoConstants.CONFIRMED_WONT_GO);
+            }
+        }
+    }
+
+    private void loadDataFromActivity() {
+        //Pegar valores enviado na Intent
+        Bundle extras = getIntent().getExtras();
+
+        if(extras != null) {
+            String presence = (String) extras.get(FimDeAnoConstants.PRESENCE);
+            if(presence.equals(FimDeAnoConstants.CONFIRMED_WILL_GO)){
+                this.mViewHold.checkParticipate.setChecked(true);
+            }else{
+                this.mViewHold.checkParticipate.setChecked(false);
             }
         }
     }
